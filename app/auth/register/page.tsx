@@ -1,7 +1,7 @@
 "use client";
 import { useState, FormEvent, ChangeEvent } from "react";
 import { FormData } from "@/app/interfaces";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 
 const RegisterPage = () => {
@@ -29,12 +29,15 @@ const RegisterPage = () => {
       headers: {
         'Content-Type' : 'application/son'
       }
-    })
-      const resJson = await res.json()
+    }) 
 
-      if (res.ok) {
-        redirect('/'); 
-  };
+    if (res.ok) {
+      redirect('/auth/login'); 
+};
+  }
+     
+
+      
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
